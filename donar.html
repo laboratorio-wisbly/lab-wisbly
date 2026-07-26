@@ -1,0 +1,1423 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Donar · Cuida 360 — Sostén el cuidado colectivo</title>
+<meta name="description" content="Tu aporte hace posible que más cuidadoras y emprendedoras accedan gratuitamente a nuestros círculos, talleres y recursos." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="theme.css">
+
+<style>
+/* ═══ Page hero especial de Donar ═══ */
+.donar-hero { background: linear-gradient(160deg, var(--arena) 0%, var(--coral-l) 100%); }
+.donar-hero::before {
+  background:
+    radial-gradient(ellipse 60% 55% at 85% 20%, rgba(224, 138, 128, 0.25) 0%, transparent 60%),
+    radial-gradient(ellipse 55% 55% at 15% 90%, rgba(127, 169, 155, 0.22) 0%, transparent 60%);
+}
+
+/* ═══ Stats de impacto ═══ */
+.impacto-sec { padding: 60px 32px 100px; background: var(--arena); }
+.impacto-in { max-width: 1240px; margin: 0 auto; }
+.impacto-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+@media (max-width: 860px) { .impacto-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 500px) { .impacto-grid { grid-template-columns: 1fr; } }
+.impacto-card {
+  background: white;
+  border-radius: 20px;
+  padding: 32px 24px;
+  text-align: center;
+  border: 1px solid var(--arena-d);
+  transition: transform 0.24s;
+}
+.impacto-card:hover { transform: translateY(-4px); }
+.impacto-num {
+  font-family: var(--ff-serif);
+  font-weight: 700;
+  font-size: 48px;
+  color: var(--salvia-d);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.impacto-card:nth-child(2) .impacto-num { color: var(--coral-d); }
+.impacto-card:nth-child(3) .impacto-num { color: var(--acero-d); }
+.impacto-card:nth-child(4) .impacto-num { color: var(--salvia-d); }
+.impacto-label {
+  font-size: 14px;
+  color: var(--gris);
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+/* ═══ Sección principal de donación ═══ */
+.donation-sec { padding: 100px 32px; background: linear-gradient(180deg, var(--arena) 0%, var(--salvia-l) 100%); }
+.donation-in {
+  max-width: 1240px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 56px;
+  align-items: start;
+}
+@media (max-width: 900px) { .donation-in { grid-template-columns: 1fr; gap: 40px; } }
+
+/* Left column: lo que tu aporte hace */
+.donation-left h2 {
+  font-family: var(--ff-serif);
+  font-weight: 500;
+  font-size: clamp(28px, 3.4vw, 40px);
+  color: var(--antracita);
+  line-height: 1.15;
+  margin-bottom: 20px;
+  letter-spacing: -0.01em;
+}
+.donation-left h2 em { font-style: italic; color: var(--salvia-d); }
+.donation-left > p {
+  font-size: 16px;
+  color: var(--gris);
+  line-height: 1.65;
+  margin-bottom: 32px;
+}
+.impact-list { display: flex; flex-direction: column; gap: 14px; margin-bottom: 32px; }
+.impact-item {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 16px 18px;
+  background: white;
+  border-radius: 14px;
+  border: 1px solid var(--arena-d);
+}
+.impact-amount {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 78px;
+  padding: 10px 12px;
+  background: var(--salvia-l);
+  border-radius: 12px;
+  flex-shrink: 0;
+}
+.impact-amount .num {
+  font-family: var(--ff-serif);
+  font-weight: 700;
+  font-size: 24px;
+  color: var(--salvia-d);
+  line-height: 1;
+}
+.impact-amount .lbl {
+  font-size: 10px;
+  color: var(--gris);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+.impact-item h4 {
+  font-family: var(--ff-serif);
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--antracita);
+  margin-bottom: 4px;
+}
+.impact-item p { font-size: 14px; color: var(--gris); line-height: 1.5; }
+
+/* Right column: form de donación */
+.donation-card {
+  background: white;
+  border-radius: 24px;
+  padding: 36px 32px;
+  box-shadow: 0 20px 50px rgba(44,42,41,0.08);
+  border: 1px solid var(--arena-d);
+}
+.donation-card h3 {
+  font-family: var(--ff-serif);
+  font-weight: 600;
+  font-size: 24px;
+  color: var(--antracita);
+  margin-bottom: 6px;
+}
+.donation-card > p {
+  font-size: 14px;
+  color: var(--gris);
+  margin-bottom: 24px;
+}
+
+/* Toggle único vs mensual */
+.freq-toggle {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: var(--arena);
+  border-radius: 12px;
+  padding: 4px;
+  margin-bottom: 24px;
+}
+.freq-toggle button {
+  padding: 12px;
+  background: transparent;
+  border: none;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--gris);
+  border-radius: 9px;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+.freq-toggle button.active {
+  background: white;
+  color: var(--salvia-d);
+  box-shadow: 0 2px 8px rgba(44,42,41,0.08);
+}
+
+/* Monto grid */
+.amount-label {
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gris);
+  margin-bottom: 12px;
+}
+.amount-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.amount-btn {
+  padding: 18px 8px;
+  background: white;
+  border: 1.5px solid var(--arena-d);
+  border-radius: 12px;
+  font-family: var(--ff-serif);
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--antracita);
+  cursor: pointer;
+  transition: all 0.18s;
+  position: relative;
+}
+.amount-btn:hover { border-color: var(--salvia); }
+.amount-btn.active {
+  border-color: var(--salvia);
+  background: var(--salvia-l);
+  color: var(--salvia-d);
+}
+.amount-btn small {
+  display: block;
+  font-family: var(--ff-sans);
+  font-weight: 500;
+  font-size: 11px;
+  color: var(--gris);
+  margin-top: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.amount-btn.active small { color: var(--salvia-d); }
+.amount-input {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1.5px solid var(--arena-d);
+  border-radius: 12px;
+  font-family: inherit;
+  font-size: 15px;
+  background: var(--arena);
+  outline: none;
+  transition: all 0.18s;
+  margin-bottom: 24px;
+}
+.amount-input:focus {
+  border-color: var(--salvia);
+  background: white;
+  box-shadow: 0 0 0 3px rgba(127,169,155,0.15);
+}
+
+.donation-info {
+  padding: 14px 16px;
+  background: var(--salvia-l);
+  border-radius: 12px;
+  font-size: 13px;
+  color: var(--salvia-d);
+  line-height: 1.5;
+  margin-bottom: 20px;
+  display: flex;
+  gap: 10px;
+}
+.donation-info span:first-child { flex-shrink: 0; }
+
+.donate-btn {
+  width: 100%;
+  padding: 16px;
+  border-radius: 12px;
+  background: var(--coral);
+  color: white;
+  border: none;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 8px 24px rgba(224,138,128,0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.donate-btn:hover {
+  background: var(--coral-d);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(224,138,128,0.45);
+}
+.donate-methods {
+  margin-top: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  font-size: 12px;
+  color: var(--gris-l);
+}
+.donate-methods span { font-weight: 600; }
+
+/* ═══ Modos de aporte / otras formas ═══ */
+.modos-sec { padding: 100px 32px; background: var(--arena); }
+.modos-in { max-width: 1240px; margin: 0 auto; }
+.modos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+@media (max-width: 860px) { .modos-grid { grid-template-columns: 1fr; } }
+.modo-card {
+  background: white;
+  border-radius: 20px;
+  padding: 32px 28px;
+  border: 1px solid var(--arena-d);
+  transition: all 0.24s;
+  position: relative;
+  overflow: hidden;
+}
+.modo-card:hover { transform: translateY(-4px); box-shadow: 0 14px 34px rgba(44,42,41,0.08); }
+.modo-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--salvia);
+}
+.modo-card:nth-child(2)::before { background: var(--coral); }
+.modo-card:nth-child(3)::before { background: var(--acero); }
+.modo-ic {
+  width: 60px; height: 60px;
+  border-radius: 16px;
+  background: var(--salvia-l);
+  color: var(--salvia-d);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 28px;
+  margin-bottom: 22px;
+}
+.modo-card:nth-child(2) .modo-ic { background: var(--coral-l); color: var(--coral-d); }
+.modo-card:nth-child(3) .modo-ic { background: var(--acero-l); color: var(--acero-d); }
+.modo-card h3 {
+  font-family: var(--ff-serif);
+  font-weight: 600;
+  font-size: 22px;
+  color: var(--antracita);
+  margin-bottom: 10px;
+}
+.modo-card p {
+  font-size: 14.5px;
+  color: var(--gris);
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+.modo-card ul {
+  list-style: none;
+  margin-bottom: 22px;
+}
+.modo-card ul li {
+  font-size: 13.5px;
+  color: var(--gris);
+  padding: 8px 0;
+  padding-left: 22px;
+  position: relative;
+  border-top: 1px solid var(--arena-d);
+}
+.modo-card ul li:first-child { border-top: none; }
+.modo-card ul li::before {
+  content: '✓';
+  position: absolute;
+  left: 0; top: 8px;
+  color: var(--salvia);
+  font-weight: 700;
+}
+.modo-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: var(--salvia-l);
+  color: var(--salvia-d);
+  font-weight: 600;
+  font-size: 13.5px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.18s;
+  text-decoration: none;
+}
+.modo-btn:hover { background: var(--salvia); color: white; }
+
+/* ═══ Transparencia ═══ */
+.trans-sec {
+  padding: 100px 32px;
+  background: var(--antracita);
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+.trans-sec::before {
+  content: '';
+  position: absolute;
+  top: -100px; right: -80px;
+  width: 300px; height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(127,169,155,0.25) 0%, transparent 70%);
+}
+.trans-in { max-width: 1240px; margin: 0 auto; position: relative; z-index: 2; }
+.trans-sec .sec-t { color: white; }
+.trans-sec .sec-t em { color: var(--salvia); }
+.trans-sec .sec-eyebrow { color: var(--salvia); }
+.trans-sec .sec-eyebrow::before { background: var(--salvia); }
+.trans-sec .sec-sub { color: rgba(255,255,255,0.72); }
+
+.desglose-wrap {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 48px;
+  align-items: center;
+  margin-top: 40px;
+}
+@media (max-width: 900px) { .desglose-wrap { grid-template-columns: 1fr; gap: 32px; } }
+.desglose-bars { display: flex; flex-direction: column; gap: 20px; }
+.desglose-bar > .top {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-size: 14.5px;
+}
+.desglose-bar .top b { color: white; font-weight: 600; }
+.desglose-bar .top span { color: var(--salvia); font-family: var(--ff-serif); font-weight: 700; font-size: 18px; }
+.desglose-bar .track {
+  height: 10px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.desglose-bar .fill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--salvia) 0%, var(--acero) 100%);
+}
+.desglose-bar:nth-child(2) .fill { background: linear-gradient(90deg, var(--coral) 0%, var(--salvia) 100%); }
+.desglose-bar:nth-child(3) .fill { background: linear-gradient(90deg, var(--acero) 0%, var(--salvia) 100%); }
+.desglose-bar:nth-child(4) .fill { background: linear-gradient(90deg, var(--salvia-d) 0%, var(--salvia) 100%); }
+
+.trans-panel {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 20px;
+  padding: 32px 28px;
+  backdrop-filter: blur(6px);
+}
+.trans-panel h3 {
+  font-family: var(--ff-serif);
+  font-weight: 600;
+  font-size: 22px;
+  color: white;
+  margin-bottom: 16px;
+}
+.trans-panel p {
+  font-size: 14.5px;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.65;
+  margin-bottom: 24px;
+}
+.trans-links { display: flex; flex-direction: column; gap: 10px; }
+.trans-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 12px;
+  color: white;
+  font-size: 14px;
+  transition: all 0.18s;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.trans-link:hover { background: rgba(255,255,255,0.12); border-color: var(--salvia); }
+.trans-link .ic {
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  background: rgba(127,169,155,0.2);
+  color: var(--salvia);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.trans-link .arrow { margin-left: auto; color: var(--salvia); }
+
+/* ═══ Testimonio grande ═══ */
+.big-tst-sec {
+  padding: 100px 32px;
+  background: var(--arena);
+}
+.big-tst-in {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 60px 40px;
+  background: white;
+  border-radius: 28px;
+  border: 1px solid var(--arena-d);
+  position: relative;
+}
+.big-tst-in::before {
+  content: '“';
+  position: absolute;
+  top: -30px; left: 50%;
+  transform: translateX(-50%);
+  width: 68px; height: 68px;
+  background: var(--salvia);
+  color: white;
+  border-radius: 50%;
+  font-family: var(--ff-serif);
+  font-size: 60px;
+  line-height: 100px;
+  display: flex; align-items: center; justify-content: center;
+  padding-top: 26px;
+}
+.big-tst-in q {
+  display: block;
+  font-family: var(--ff-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(20px, 2.4vw, 28px);
+  color: var(--antracita);
+  line-height: 1.45;
+  margin-bottom: 32px;
+}
+.big-tst-in q::before, .big-tst-in q::after { content: ''; }
+.big-tst-who {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+.big-tst-av {
+  width: 60px; height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  border: 3px solid white;
+  box-shadow: 0 4px 14px rgba(44,42,41,0.15);
+  background: var(--salvia-l);
+}
+.big-tst-who > div { text-align: left; }
+.big-tst-who b { display: block; font-size: 15px; color: var(--antracita); }
+.big-tst-who span { font-size: 13px; color: var(--gris); }
+
+/* ═══ Empresas donantes ═══ */
+.empresas-sec { padding: 80px 32px; background: var(--arena); }
+.empresas-in { max-width: 1240px; margin: 0 auto; text-align: center; }
+.empresas-in > p {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gris);
+  margin-bottom: 30px;
+}
+.empresas-logos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 40px 56px;
+  opacity: 0.75;
+}
+.logo-fake {
+  font-family: var(--ff-serif);
+  font-style: italic;
+  font-weight: 600;
+  font-size: 22px;
+  color: var(--gris);
+  letter-spacing: -0.01em;
+}
+.logo-fake::before {
+  content: '⬢ ';
+  color: var(--salvia);
+  font-style: normal;
+}
+
+/* ═══ Historias visuales de impacto ═══ */
+.hist-sec { padding: 100px 32px; background: linear-gradient(180deg, var(--arena) 0%, var(--salvia-l) 100%); }
+.hist-in { max-width: 1240px; margin: 0 auto; }
+.hist-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+@media (max-width: 900px) { .hist-grid { grid-template-columns: 1fr; } }
+.hist-card {
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid var(--arena-d);
+  transition: all 0.24s;
+  display: flex;
+  flex-direction: column;
+}
+.hist-card:hover { transform: translateY(-4px); box-shadow: 0 16px 36px rgba(44,42,41,0.1); }
+.hist-media {
+  aspect-ratio: 4 / 3;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+.hist-media::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.5) 100%);
+}
+.hist-tag {
+  position: absolute;
+  bottom: 14px; left: 14px;
+  z-index: 2;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.95);
+  color: var(--antracita);
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.hist-body { padding: 26px 26px 28px; flex: 1; display: flex; flex-direction: column; }
+.hist-body h3 {
+  font-family: var(--ff-serif);
+  font-weight: 600;
+  font-size: 20px;
+  color: var(--antracita);
+  margin-bottom: 10px;
+  line-height: 1.25;
+}
+.hist-body p {
+  font-size: 14.5px;
+  color: var(--gris);
+  line-height: 1.6;
+  margin-bottom: 18px;
+  flex: 1;
+}
+.hist-impact {
+  padding: 12px 16px;
+  background: var(--salvia-l);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.hist-impact b {
+  font-family: var(--ff-serif);
+  font-weight: 700;
+  font-size: 22px;
+  color: var(--salvia-d);
+  line-height: 1;
+}
+.hist-impact span {
+  font-size: 12px;
+  color: var(--gris);
+  line-height: 1.35;
+  text-align: right;
+}
+
+/* ═══ FAQ y sec extras heredan de theme.css ═══ */
+.faq-sec { padding: 100px 32px; background: linear-gradient(180deg, var(--arena) 0%, var(--coral-l) 100%); }
+.faq-in { max-width: 820px; margin: 0 auto; }
+</style>
+</head>
+
+<body>
+
+<div class="demo-banner">
+  <span class="demo-badge">Maqueta</span>
+  <span>Diseño referencial para <b>Cuida 360</b> — imágenes de Unsplash serán reemplazadas con fotos reales del equipo y talleres.</span>
+</div>
+
+<!-- ═══════════════════════ TOPBAR ═══════════════════════ -->
+<div class="topbar">
+  <div class="topbar-in">
+    <div class="topbar-left">
+      <a href="#"><span class="ic">💬</span>Ayuda</a>
+      <a href="#"><span class="ic">📝</span>Blog</a>
+      <a href="index.html#contacto"><span class="ic">✉</span>Contacto</a>
+    </div>
+    <div class="topbar-right">
+      <a href="#"><span class="ic">🌐</span>Chile · Español ▾</a>
+      <a href="#"><span class="ic">♡</span>Favoritos</a>
+      <button class="topbar-dark"><span class="ic">◐</span>Oscuro</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ MAIN NAV ═══════════════════════ -->
+<nav class="nav">
+  <div class="nav-in">
+    <button class="nav-burger" aria-label="Abrir menú">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <line x1="4" y1="7" x2="20" y2="7"/>
+        <line x1="4" y1="12" x2="20" y2="12"/>
+        <line x1="4" y1="17" x2="20" y2="17"/>
+      </svg>
+    </button>
+    <a href="index.html" class="nav-logo">
+      <span class="nav-logo-mark">C</span>
+      Cuida <em>360</em>
+    </a>
+
+    <ul class="nav-main">
+      <li class="nav-main-item has-mega">
+        <button class="nav-main-link">Talleres <span class="chev">▾</span></button>
+        <div class="mega">
+          <div class="mega-in">
+            <div class="mega-col">
+              <h5>Por tipo</h5>
+              <ul>
+                <li><a href="index.html#eventos">Círculos de bienestar</a></li>
+                <li><a href="index.html#eventos">Jornadas cuidadoras</a></li>
+                <li><a href="index.html#eventos">Talleres carga invisible</a></li>
+                <li><a href="index.html#eventos">Retiros anuales</a></li>
+                <li><a href="index.html#eventos" class="last-link">Ver todos →</a></li>
+              </ul>
+            </div>
+            <div class="mega-col">
+              <h5>Modalidad</h5>
+              <ul>
+                <li><a href="#">Presencial</a></li>
+                <li><a href="#">Online (Zoom)</a></li>
+                <li><a href="#">Híbridos</a></li>
+                <li><a href="#">Retiros</a></li>
+                <li><a href="#" class="last-link">Ver calendario →</a></li>
+              </ul>
+            </div>
+            <div class="mega-col">
+              <h5>Por ciudad</h5>
+              <ul>
+                <li><a href="#">Santiago</a></li>
+                <li><a href="#">Valparaíso</a></li>
+                <li><a href="#">Viña del Mar</a></li>
+                <li><a href="#">Concepción</a></li>
+                <li><a href="#" class="last-link">Ver todas →</a></li>
+              </ul>
+            </div>
+            <div class="mega-cta">
+              <div class="mega-cta-title">📅 ¿No encuentras uno?</div>
+              <p>Suscríbete y te avisamos cuando abramos el próximo cupo.</p>
+              <a href="index.html#contacto">Suscribirme →</a>
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <li class="nav-main-item has-mega">
+        <button class="nav-main-link">Cursos <span class="chev">▾</span></button>
+        <div class="mega">
+          <div class="mega-in">
+            <div class="mega-col">
+              <h5>Por audiencia</h5>
+              <ul>
+                <li><a href="cursos.html">Para cuidadoras</a></li>
+                <li><a href="cursos.html">Para emprendedoras</a></li>
+                <li><a href="cursos.html">Autocuidado</a></li>
+                <li><a href="cursos.html">Duelo y final de vida</a></li>
+                <li><a href="cursos.html" class="last-link">Ver todo el catálogo →</a></li>
+              </ul>
+            </div>
+            <div class="mega-col">
+              <h5>Formato</h5>
+              <ul>
+                <li><a href="cursos.html">Autodirigidos</a></li>
+                <li><a href="cursos.html">Programas en vivo</a></li>
+                <li><a href="cursos.html">Gratis</a></li>
+                <li><a href="cursos.html">Con certificado</a></li>
+              </ul>
+            </div>
+            <div class="mega-col">
+              <h5>Destacados</h5>
+              <ul>
+                <li><a href="cursos.html">Escuela Carga Invisible</a></li>
+                <li><a href="cursos.html">Emprender sin quemarte</a></li>
+                <li><a href="cursos.html">10 minutos para vos</a></li>
+                <li><a href="cursos.html">Redes de apoyo reales</a></li>
+              </ul>
+            </div>
+            <div class="mega-cta">
+              <div class="mega-cta-title">🎁 Curso gratis</div>
+              <p>Empieza con "10 minutos para vos" — micro-rutinas de pausa para tu día.</p>
+              <a href="cursos.html">Empezar gratis →</a>
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <li class="nav-main-item has-mega">
+        <button class="nav-main-link">Consultoría <span class="chev">▾</span></button>
+        <div class="mega">
+          <div class="mega-in">
+            <div class="mega-col">
+              <h5>Servicios</h5>
+              <ul>
+                <li><a href="consultoria.html#servicios">Diagnóstico organizacional</a></li>
+                <li><a href="consultoria.html#servicios">Talleres para equipos</a></li>
+                <li><a href="consultoria.html#servicios">Programa formativo anual</a></li>
+                <li><a href="consultoria.html#servicios">Coaching a líderes</a></li>
+                <li><a href="consultoria.html" class="last-link">Ver todos →</a></li>
+              </ul>
+            </div>
+            <div class="mega-col">
+              <h5>Por sector</h5>
+              <ul>
+                <li><a href="consultoria.html">Educación / colegios</a></li>
+                <li><a href="consultoria.html">Salud</a></li>
+                <li><a href="consultoria.html">Municipal / público</a></li>
+                <li><a href="consultoria.html">Empresas</a></li>
+                <li><a href="consultoria.html">Fundaciones y ONGs</a></li>
+              </ul>
+            </div>
+            <div class="mega-col">
+              <h5>Metodología</h5>
+              <ul>
+                <li><a href="consultoria.html">Nuestro proceso</a></li>
+                <li><a href="consultoria.html">Casos de éxito</a></li>
+                <li><a href="consultoria.html">Formatos y valores</a></li>
+                <li><a href="consultoria.html">Testimonios</a></li>
+              </ul>
+            </div>
+            <div class="mega-cta">
+              <div class="mega-cta-title">📅 Diagnóstico gratuito</div>
+              <p>45 min por Zoom, sin costo. Te dejamos 3 recomendaciones por escrito.</p>
+              <a href="consultoria.html#agendar">Agendar reunión →</a>
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <li class="nav-main-item">
+        <a href="donar.html" class="nav-main-link active">
+          <span class="link-ic">💛</span>Aporta
+        </a>
+      </li>
+    </ul>
+
+    <div class="nav-right">
+      <a href="index.html#eventos" class="nav-quick">Explorar</a>
+      <a href="#formulario-donacion" class="nav-quick strong">Donar ahora</a>
+      <button class="nav-icon nav-notif hide-mobile" aria-label="Notificaciones">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+          <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+        </svg>
+        <span class="nav-notif-badge">3</span>
+      </button>
+      <button class="nav-avatar" aria-label="Mi cuenta">
+        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100&q=80" alt="Perfil" />
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════════════════════ DRAWER ═══════════════════════ -->
+<div class="drawer-backdrop" aria-hidden="true"></div>
+<aside class="drawer" aria-label="Menú principal">
+  <div class="drawer-header">
+    <a href="index.html" class="nav-logo">
+      <span class="nav-logo-mark">C</span>
+      Cuida <em>360</em>
+    </a>
+    <button class="drawer-close" aria-label="Cerrar menú">✕</button>
+  </div>
+  <div class="drawer-body">
+    <a href="index.html" class="drawer-item">
+      <span class="drawer-item-left"><span class="ic">🏠</span>Inicio</span>
+      <span class="chev">›</span>
+    </a>
+    <a href="index.html#eventos" class="drawer-item">
+      <span class="drawer-item-left"><span class="ic">🌱</span>Talleres</span>
+      <span class="chev">›</span>
+    </a>
+    <a href="cursos.html" class="drawer-item">
+      <span class="drawer-item-left"><span class="ic">🎓</span>Cursos online</span>
+      <span class="chev">›</span>
+    </a>
+    <a href="consultoria.html" class="drawer-item">
+      <span class="drawer-item-left"><span class="ic">🏢</span>Consultoría</span>
+      <span class="chev">›</span>
+    </a>
+    <a href="donar.html" class="drawer-item active">
+      <span class="drawer-item-left"><span class="ic">💛</span>Donar</span>
+      <span class="chev">›</span>
+    </a>
+
+    <div class="drawer-divider">Mi cuenta</div>
+    <a href="#" class="drawer-item">
+      <span class="drawer-item-left"><span class="ic">👤</span>Perfil</span>
+      <span class="chev">›</span>
+    </a>
+    <a href="#" class="drawer-item">
+      <span class="drawer-item-left"><span class="ic">🔔</span>Notificaciones</span>
+      <span class="drawer-badge">18</span>
+    </a>
+    <a href="#" class="drawer-item">
+      <span class="drawer-item-left"><span class="ic">📋</span>Mis inscripciones</span>
+      <span class="chev">›</span>
+    </a>
+    <a href="#" class="drawer-item">
+      <span class="drawer-item-left"><span class="ic">♡</span>Favoritos</span>
+      <span class="chev">›</span>
+    </a>
+    <a href="#" class="drawer-item">
+      <span class="drawer-item-left"><span class="ic">💛</span>Mis aportes</span>
+      <span class="chev">›</span>
+    </a>
+
+    <div class="drawer-divider">Ayuda</div>
+    <a href="#" class="drawer-item">
+      <span class="drawer-item-left"><span class="ic">💬</span>Soporte</span>
+      <span class="chev">›</span>
+    </a>
+    <a href="#" class="drawer-item">
+      <span class="drawer-item-left"><span class="ic">📝</span>Blog</span>
+      <span class="chev">›</span>
+    </a>
+    <a href="index.html#contacto" class="drawer-item">
+      <span class="drawer-item-left"><span class="ic">✉</span>Contacto</span>
+      <span class="chev">›</span>
+    </a>
+  </div>
+  <div class="drawer-footer">
+    <a href="#formulario-donacion" class="drawer-cta">💛 Donar ahora</a>
+    <a href="https://wa.me/56900000000" class="drawer-cta ghost" target="_blank" rel="noopener">💬 WhatsApp</a>
+  </div>
+</aside>
+
+<!-- ═══════════════════════ PAGE HERO ═══════════════════════ -->
+<section class="page-hero donar-hero">
+  <div class="page-hero-in reveal">
+    <div class="sec-eyebrow">Aporta a Cuida 360</div>
+    <h1>Sostén el <em>cuidado colectivo</em> con lo que puedas dar</h1>
+    <p class="page-hero-sub">
+      El 68 % de nuestros cupos son gratuitos o con precio comunitario. Eso solo
+      es posible gracias a personas y organizaciones que aportan de forma
+      regular. Tu donación —chica o grande— sostiene esa red.
+    </p>
+    <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+      <a href="#formulario-donacion" class="btn btn-coral">💛 Quiero donar</a>
+      <a href="#modos" class="btn btn-ghost">Ver otras formas de aportar</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ IMPACTO ═══════════════════════ -->
+<section class="impacto-sec">
+  <div class="impacto-in">
+    <div class="impacto-grid">
+      <div class="impacto-card reveal">
+        <div class="impacto-num">+250</div>
+        <div class="impacto-label">Mujeres acompañadas desde 2023</div>
+      </div>
+      <div class="impacto-card reveal">
+        <div class="impacto-num">42</div>
+        <div class="impacto-label">Círculos y talleres facilitados</div>
+      </div>
+      <div class="impacto-card reveal">
+        <div class="impacto-num">68 %</div>
+        <div class="impacto-label">De cupos con precio comunitario o gratis</div>
+      </div>
+      <div class="impacto-card reveal">
+        <div class="impacto-num">14</div>
+        <div class="impacto-label">Comunas de Chile donde hemos estado</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ DONACIÓN PRINCIPAL ═══════════════════════ -->
+<section class="donation-sec" id="formulario-donacion">
+  <div class="donation-in">
+
+    <!-- Left: qué hace tu aporte -->
+    <div class="donation-left reveal">
+      <div class="sec-eyebrow">Qué logra tu aporte</div>
+      <h2>Cada aporte se traduce en <em>una silla en el círculo</em></h2>
+      <p>
+        No es un número abstracto — es una cuidadora agotada que llega
+        gratis, una emprendedora que recibe la guía en su mail, una
+        jornada que se hace en un barrio nuevo.
+      </p>
+
+      <div class="impact-list">
+        <div class="impact-item">
+          <div class="impact-amount">
+            <span class="num">$5k</span>
+            <span class="lbl">CLP</span>
+          </div>
+          <div>
+            <h4>Un cupo en un círculo online</h4>
+            <p>Cubre el costo de una cuidadora que no puede pagar la inscripción.</p>
+          </div>
+        </div>
+        <div class="impact-item">
+          <div class="impact-amount">
+            <span class="num">$15k</span>
+            <span class="lbl">CLP</span>
+          </div>
+          <div>
+            <h4>Materiales impresos para un taller presencial</h4>
+            <p>Bitácoras, guías y kits para 10 participantes.</p>
+          </div>
+        </div>
+        <div class="impact-item">
+          <div class="impact-amount">
+            <span class="num">$50k</span>
+            <span class="lbl">CLP</span>
+          </div>
+          <div>
+            <h4>Una jornada en una comuna nueva</h4>
+            <p>Traslados, honorarios y espacio para llevar Cuida 360 a otro territorio.</p>
+          </div>
+        </div>
+        <div class="impact-item">
+          <div class="impact-amount">
+            <span class="num">$100k</span>
+            <span class="lbl">CLP</span>
+          </div>
+          <div>
+            <h4>Un mes de becas completas</h4>
+            <p>10 mujeres acceden gratuitamente durante todo un mes.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: form -->
+    <div class="donation-card reveal">
+      <h3>Haz tu aporte</h3>
+      <p>Elige la frecuencia y el monto — o ingresa el que prefieras.</p>
+
+      <div class="freq-toggle">
+        <button class="active" data-freq="unica">Aporte único</button>
+        <button data-freq="mensual">Mensual 💛</button>
+      </div>
+
+      <div class="amount-label">Elige un monto</div>
+      <div class="amount-grid">
+        <button class="amount-btn" data-monto="5000">$5.000<small>1 cupo</small></button>
+        <button class="amount-btn active" data-monto="15000">$15.000<small>1 taller</small></button>
+        <button class="amount-btn" data-monto="50000">$50.000<small>1 jornada</small></button>
+      </div>
+      <div class="amount-grid">
+        <button class="amount-btn" data-monto="100000">$100.000<small>10 becas</small></button>
+        <button class="amount-btn" data-monto="250000">$250.000<small>1 comuna</small></button>
+        <button class="amount-btn" data-monto="0">Otro<small>tú eliges</small></button>
+      </div>
+      <input type="number" class="amount-input" placeholder="Escribe otro monto (CLP)" id="monto-libre" />
+
+      <div class="donation-info">
+        <span>ℹ️</span>
+        <span>Tu aporte es procesado por Transbank Webpay. Fundación Cuida 360 emite certificado tributario para donaciones sobre $50.000.</span>
+      </div>
+
+      <button class="donate-btn" onclick="event.preventDefault(); alert('En un flujo real, te llevamos a Webpay. ¡Gracias por sostenernos!');">
+        💛 Aportar <span id="monto-visible">$15.000</span>
+      </button>
+
+      <div class="donate-methods">
+        <span>Métodos:</span>
+        <span>💳 Tarjeta</span>
+        <span>🏦 Transferencia</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════ OTRAS FORMAS DE APORTAR ═══════════════════════ -->
+<section class="modos-sec" id="modos">
+  <div class="modos-in">
+    <div class="sec-head reveal">
+      <div class="sec-eyebrow">Otras formas de aportar</div>
+      <h2 class="sec-t">No solo con <em>plata</em> se sostiene una red</h2>
+      <p class="sec-sub">
+        Podés donar tiempo, especialidad o red — todo suma para que más
+        mujeres accedan a acompañamiento real.
+      </p>
+    </div>
+
+    <div class="modos-grid">
+      <div class="modo-card reveal">
+        <div class="modo-ic">🏢</div>
+        <h3>Empresas y organizaciones</h3>
+        <p>Financia una jornada completa o un ciclo anual con tu marca asociada. Emitimos certificado y reporte de impacto.</p>
+        <ul>
+          <li>Certificado tributario ley 19.885</li>
+          <li>Reporte trimestral de impacto</li>
+          <li>Convenio de patrocinio anual</li>
+          <li>Difusión en nuestros canales</li>
+        </ul>
+        <a href="mailto:cuida360ltda@gmail.com?subject=Alianza%20empresarial" class="modo-btn">Conversemos →</a>
+      </div>
+
+      <div class="modo-card reveal">
+        <div class="modo-ic">🤲</div>
+        <h3>Voluntariado y tiempo</h3>
+        <p>¿Facilitadoras, psicólogas, diseñadoras o comunicadoras? Sumate al equipo con horas concretas al mes.</p>
+        <ul>
+          <li>Facilitación de círculos</li>
+          <li>Apoyo psicológico voluntario</li>
+          <li>Difusión y redes</li>
+          <li>Logística de encuentros</li>
+        </ul>
+        <a href="mailto:cuida360ltda@gmail.com?subject=Voluntariado" class="modo-btn">Postular →</a>
+      </div>
+
+      <div class="modo-card reveal">
+        <div class="modo-ic">🎁</div>
+        <h3>Donación en especie</h3>
+        <p>Necesitamos espacios prestados, insumos y kits para talleres. Si podés facilitar alguno, escribinos.</p>
+        <ul>
+          <li>Espacios para talleres presenciales</li>
+          <li>Cuadernos, guías impresas, kits</li>
+          <li>Coffee y catering para jornadas</li>
+          <li>Servicios profesionales</li>
+        </ul>
+        <a href="mailto:cuida360ltda@gmail.com?subject=Donación%20en%20especie" class="modo-btn">Ofrecer →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ TRANSPARENCIA ═══════════════════════ -->
+<section class="trans-sec">
+  <div class="trans-in">
+    <div class="sec-head reveal">
+      <div class="sec-eyebrow">Transparencia</div>
+      <h2 class="sec-t">Cómo usamos <em>cada peso</em> que llega</h2>
+      <p class="sec-sub">
+        Publicamos anualmente el desglose completo de ingresos y egresos.
+        Este año hemos gastado así, cada $100 que aportas:
+      </p>
+    </div>
+
+    <div class="desglose-wrap">
+      <div class="desglose-bars reveal">
+        <div class="desglose-bar">
+          <div class="top"><b>Becas y precios comunitarios</b><span>$52</span></div>
+          <div class="track"><div class="fill" style="width:52%"></div></div>
+        </div>
+        <div class="desglose-bar">
+          <div class="top"><b>Facilitación y honorarios</b><span>$28</span></div>
+          <div class="track"><div class="fill" style="width:28%"></div></div>
+        </div>
+        <div class="desglose-bar">
+          <div class="top"><b>Materiales e insumos</b><span>$12</span></div>
+          <div class="track"><div class="fill" style="width:12%"></div></div>
+        </div>
+        <div class="desglose-bar">
+          <div class="top"><b>Gestión administrativa</b><span>$8</span></div>
+          <div class="track"><div class="fill" style="width:8%"></div></div>
+        </div>
+      </div>
+
+      <div class="trans-panel reveal">
+        <h3>Documentos abiertos</h3>
+        <p>
+          Todo nuestro reporte financiero está publicado. Podés revisar en
+          cualquier momento cómo se distribuyen las donaciones.
+        </p>
+        <div class="trans-links">
+          <a href="#" class="trans-link">
+            <span class="ic">📄</span>
+            <span><b style="display:block;">Memoria anual 2025</b><span style="color:rgba(255,255,255,0.55); font-size:12.5px;">PDF · 3.4 MB</span></span>
+            <span class="arrow">↗</span>
+          </a>
+          <a href="#" class="trans-link">
+            <span class="ic">📊</span>
+            <span><b style="display:block;">Balance financiero</b><span style="color:rgba(255,255,255,0.55); font-size:12.5px;">PDF · 1.8 MB</span></span>
+            <span class="arrow">↗</span>
+          </a>
+          <a href="#" class="trans-link">
+            <span class="ic">🏛️</span>
+            <span><b style="display:block;">Escritura y estatutos</b><span style="color:rgba(255,255,255,0.55); font-size:12.5px;">PDF · 620 KB</span></span>
+            <span class="arrow">↗</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ TESTIMONIO ═══════════════════════ -->
+<section class="big-tst-sec">
+  <div class="big-tst-in reveal">
+    <q>
+      Sabía que necesitaba parar, pero no tenía cómo pagar un espacio así. La
+      beca de Cuida 360 no fue solo un descuento — fue el permiso que necesitaba
+      para llegar y respirar.
+    </q>
+    <div class="big-tst-who">
+      <img class="big-tst-av" src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=160&h=160&q=80" alt="Macarena D." />
+      <div>
+        <b>Macarena D.</b>
+        <span>Cuidadora — beneficiaria de beca 2024</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ HISTORIAS DE IMPACTO ═══════════════════════ -->
+<section class="hist-sec">
+  <div class="hist-in">
+    <div class="sec-head reveal">
+      <div class="sec-eyebrow">Historias de impacto</div>
+      <h2 class="sec-t">Dónde <em>se ve tu aporte</em></h2>
+      <p class="sec-sub">
+        Tres momentos reales que existieron gracias a personas y organizaciones
+        que decidieron sostenernos.
+      </p>
+    </div>
+    <div class="hist-grid reveal">
+      <div class="hist-card">
+        <div class="hist-media" style="background-image:url('https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');">
+          <span class="hist-tag">Región de Valparaíso</span>
+        </div>
+        <div class="hist-body">
+          <h3>Jornada en Quilpué para cuidadoras familiares</h3>
+          <p>28 mujeres cuidadoras de larga trayectoria participaron gratuitamente de una jornada de un día, financiada 100 % con donaciones individuales.</p>
+          <div class="hist-impact"><b>28</b><span>Cuidadoras acompañadas · Marzo 2025</span></div>
+        </div>
+      </div>
+      <div class="hist-card">
+        <div class="hist-media" style="background-image:url('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');">
+          <span class="hist-tag">Programa becas</span>
+        </div>
+        <div class="hist-body">
+          <h3>Becas completas para emprendedoras</h3>
+          <p>Gracias al aporte mensual de nuestra red donante, 40 emprendedoras accedieron a cursos completos sin costo durante todo el 2024.</p>
+          <div class="hist-impact"><b>40</b><span>Becas completas · Año 2024</span></div>
+        </div>
+      </div>
+      <div class="hist-card">
+        <div class="hist-media" style="background-image:url('https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');">
+          <span class="hist-tag">Alianza empresarial</span>
+        </div>
+        <div class="hist-body">
+          <h3>Kit de bienestar para 120 profesoras</h3>
+          <p>Una empresa colaboradora financió el material impreso y la logística de una serie de talleres para docentes de colegios subvencionados.</p>
+          <div class="hist-impact"><b>120</b><span>Profesoras alcanzadas · 2025</span></div>
+        </div>
+      </div>
+    </div>
+    <p style="text-align:center; margin-top:28px; font-size:13.5px; color:var(--gris);">
+      🎨 <em>Imágenes referenciales.</em> Historias de impacto reales — fotos serán reemplazadas con registro propio.
+    </p>
+  </div>
+</section>
+
+<!-- ═══════════════════════ EMPRESAS ═══════════════════════ -->
+<section class="empresas-sec">
+  <div class="empresas-in reveal">
+    <p>Con el apoyo constante de</p>
+    <div class="empresas-logos">
+      <span class="logo-fake">Fundación Raíz</span>
+      <span class="logo-fake">Andes Salud</span>
+      <span class="logo-fake">Colectivo Tierra</span>
+      <span class="logo-fake">Municipalidad Ñuñoa</span>
+      <span class="logo-fake">Prisma Coop</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ FAQ ═══════════════════════ -->
+<section class="faq-sec">
+  <div class="faq-in">
+    <div class="sec-head reveal">
+      <div class="sec-eyebrow">Preguntas de donantes</div>
+      <h2 class="sec-t">Lo que <em>siempre nos preguntan</em></h2>
+    </div>
+    <div class="faq-list reveal">
+      <div class="faq-item open">
+        <button class="faq-q">
+          <span>¿La donación es deducible de impuestos?</span>
+          <span class="faq-chev">+</span>
+        </button>
+        <div class="faq-a">
+          <p>Sí. Cuida 360 está inscrita en el registro de donatarios de la ley 19.885. Para aportes desde $50.000 emitimos certificado tributario dentro de los 30 días siguientes.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">
+          <span>¿Puedo cancelar mi aporte mensual cuando quiera?</span>
+          <span class="faq-chev">+</span>
+        </button>
+        <div class="faq-a">
+          <p>Por supuesto. Puedes pausar o cancelar tu suscripción mensual desde tu perfil de donante o escribiéndonos. Sin trámites ni preguntas.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">
+          <span>¿Cómo sé en qué se usó mi aporte?</span>
+          <span class="faq-chev">+</span>
+        </button>
+        <div class="faq-a">
+          <p>Enviamos reporte trimestral por mail a todas las personas y organizaciones donantes, con impacto agregado (mujeres alcanzadas, jornadas realizadas, testimonios).</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">
+          <span>¿Aceptan aportes desde el extranjero?</span>
+          <span class="faq-chev">+</span>
+        </button>
+        <div class="faq-a">
+          <p>Sí, mediante transferencia internacional. Escribinos a cuida360ltda@gmail.com y te enviamos los datos bancarios.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">
+          <span>¿Puedo destinar mi aporte a una causa específica?</span>
+          <span class="faq-chev">+</span>
+        </button>
+        <div class="faq-a">
+          <p>Sí. Podés etiquetar tu donación para becas, jornadas territoriales o materiales educativos. Escribinos y armamos el destino que más te haga sentido.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+<footer class="footer">
+  <div class="footer-in">
+    <div class="footer-brand">
+      <h4>Cuida <em>360</em></h4>
+      <p>Espacios de bienestar y apoyo real para quienes cuidan y emprenden. Comunidad, herramientas y presencia — con y para mujeres.</p>
+      <div class="footer-socials">
+        <a href="#" aria-label="Instagram">📷</a>
+        <a href="#" aria-label="Facebook">👥</a>
+        <a href="mailto:cuida360ltda@gmail.com" aria-label="Email">✉</a>
+        <a href="https://wa.me/56900000000" aria-label="WhatsApp" target="_blank" rel="noopener">💬</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h5>Explorar</h5>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="cursos.html">Cursos online</a></li>
+        <li><a href="consultoria.html">Consultoría</a></li>
+        <li><a href="donar.html">Donar</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Transparencia</h5>
+      <ul>
+        <li><a href="#">Memoria anual</a></li>
+        <li><a href="#">Balance financiero</a></li>
+        <li><a href="#">Estatutos</a></li>
+        <li><a href="#">Registro donatarios</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Contacto</h5>
+      <div class="footer-contact-item"><span>✉</span><span>cuida360ltda<br />@gmail.com</span></div>
+      <div class="footer-contact-item"><span>💬</span><span>WhatsApp<br />+56 9 0000 0000</span></div>
+      <div class="footer-contact-item"><span>📷</span><span>@cuida360</span></div>
+    </div>
+  </div>
+  <div class="footer-bar">
+    <span>© 2026 Cuida 360 — Todos los derechos reservados.</span>
+    <div style="display:flex; gap:20px;">
+      <a href="#">Términos</a>
+      <a href="#">Privacidad</a>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/56900000000" class="wa-float" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+
+<script src="nav.js"></script>
+<script>
+/* Toggle frecuencia */
+document.querySelectorAll('.freq-toggle button').forEach(b => {
+  b.addEventListener('click', () => {
+    document.querySelectorAll('.freq-toggle button').forEach(x => x.classList.remove('active'));
+    b.classList.add('active');
+    updateMonto();
+  });
+});
+
+/* Monto btns */
+const montoLibre = document.getElementById('monto-libre');
+document.querySelectorAll('.amount-btn').forEach(b => {
+  b.addEventListener('click', () => {
+    document.querySelectorAll('.amount-btn').forEach(x => x.classList.remove('active'));
+    b.classList.add('active');
+    montoLibre.value = '';
+    updateMonto();
+  });
+});
+montoLibre.addEventListener('input', () => {
+  document.querySelectorAll('.amount-btn').forEach(x => x.classList.remove('active'));
+  updateMonto();
+});
+
+function fmtCLP(n) {
+  return '$' + Number(n).toLocaleString('es-CL');
+}
+function updateMonto() {
+  const active = document.querySelector('.amount-btn.active');
+  const custom = montoLibre.value;
+  let m = 0;
+  if (custom) m = Number(custom);
+  else if (active) m = Number(active.dataset.monto);
+  const freq = document.querySelector('.freq-toggle .active').dataset.freq;
+  const suffix = freq === 'mensual' ? '/mes' : '';
+  document.getElementById('monto-visible').textContent = m ? fmtCLP(m) + suffix : '—';
+}
+
+/* FAQ */
+document.querySelectorAll('.faq-item .faq-q').forEach(btn => {
+  btn.addEventListener('click', () => btn.parentElement.classList.toggle('open'));
+});
+
+/* Reveal */
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
